@@ -1,0 +1,36 @@
+{
+    "name": "frc/wp-view",
+    "type": "wordpress-muplugin",
+    "description": "View engine for WordPress",
+    "homepage": "https://www.frantic.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joonas Meriläinen",
+            "email": "joonas.merilainen@frantic.com"
+        }
+    ],
+    "keywords": [
+        "wordpress"
+    ],
+    "require": {
+        "php": ">=7.0",
+        "composer/installers": "~1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Frc\\WP\\View\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}
