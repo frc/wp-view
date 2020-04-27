@@ -8,6 +8,4 @@ Author:             Frantic
 Author URI:         https://www.frantic.fi/
 */
 
-namespace Frc\WP\Components;
-
-require_once __DIR__ . '/vendor/autoload.php';
+namespace Frc\WP\View;
