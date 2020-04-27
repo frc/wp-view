@@ -1,7 +1,7 @@
 {
     "name": "frc/wp-view",
     "type": "wordpress-muplugin",
-    "description": "View engine for WordPress",
+    "description": "View engine for WordPress.",
     "homepage": "https://www.frantic.com/",
     "license": "MIT",
     "authors": [
@@ -32,5 +32,10 @@
         "psr-4": {
             "Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "test": [
+            "vendor/bin/phpunit"
+        ]
     }
 }
