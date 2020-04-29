@@ -57,4 +57,21 @@ class ViewTest extends TestCase
             ])->render()
         );
     }
+
+     /** @test */
+     public function it_should_render_array_parameter_as_children()
+     {
+         $this->assertStringContainsString(
+             '<p>' . PHP_EOL .
+             'This is in p-tag' . PHP_EOL .
+             '</p>' .PHP_EOL,
+             $this->view('children.php', [
+                 'children' => [
+                    '<p>',
+                    'This is in p-tag',
+                    '</p>'
+                 ]
+             ])->render()
+         );
+     }
 }

@@ -53,6 +53,10 @@ class View
             $this->data = [
                 'children' => "\n" . join("\n", $key) . "\n",
             ];
+        } elseif (is_array($key) && array_key_exists('children', $key) && is_array($key['children']) ) {
+            $this->data = array_merge($key, [
+                'children' => "\n" . join("\n", $key['children']) . "\n",
+            ]);
         } elseif (is_array($key)) {
             $this->data = array_merge($this->data, $key);
         } else {
