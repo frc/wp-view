@@ -49,7 +49,7 @@ class View
             $this->data = [
                 'children' => $key,
             ];
-        } elseif (is_array($key) && ! isAssoc($key)) {
+        } elseif (is_array($key) && ! (array_keys($key) !== range(0, count($key) - 1))) {
             $this->data = [
                 'children' => "\n" . join("\n", $key) . "\n",
             ];

@@ -2,6 +2,7 @@
 
 use Frc\WP\View\Factory;
 use Frc\WP\View\FileFinder;
+use Frc\WP\View\ComponentFactory;
 
 function frc_view($view = null, $data = [])
 {
@@ -21,8 +22,4 @@ function frc_view($view = null, $data = [])
     }
 
     return $factory->make($view, $data);
-}
-
-function isAssoc($array) {
-	return array_keys($array) !== range(0, count($array) - 1);
 }
