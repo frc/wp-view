@@ -2,7 +2,7 @@
 
 use Frc\WP\View\Factory;
 use Frc\WP\View\FileFinder;
-use Frc\WP\View\ComponentFactory;
+use Frc\WP\View\Component\Factory as ComponentFactory;
 
 function frc_view($view = null, $data = [])
 {
@@ -22,4 +22,19 @@ function frc_view($view = null, $data = [])
     }
 
     return $factory->make($view, $data);
+}
+
+function frc_component($component, $data = [])
+{
+    if (! is_array($data)) {
+        $data = ['children' => $data];
+    }
+
+    $view = (new ComponentFactory)->make($component, $data);
+
+    if (! is_array($view)) {
+        return $view;
+    }
+
+    return frc_view($view['view'], $view['data']);
 }
