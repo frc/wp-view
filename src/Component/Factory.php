@@ -41,6 +41,10 @@ class Factory
 
     public function make($component, $data = [])
     {
+        if (! is_array($data)) {
+            $data = ['children' => $data];
+        }
+
         $className = $this->componentClass($component);
 
         if ($className) {

@@ -26,10 +26,6 @@ function frc_view($view = null, $data = [])
 
 function frc_component($component, $data = [])
 {
-    if (! is_array($data)) {
-        $data = ['children' => $data];
-    }
-
     $view = (new ComponentFactory)->make($component, $data);
 
     if (! is_array($view)) {

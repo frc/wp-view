@@ -28,6 +28,21 @@ class DataTestComponent
     }
 }
 
+class ChildrenTestComponent
+{
+    public function __construct($props)
+    {
+        foreach ($props as $key => $value) {
+            $this->$key = $value;
+        }
+    }
+
+    public function render()
+    {
+        return 'Hello ' . $this->children;
+    }
+}
+
 class ViewComponent
 {
     public function __construct($props)
@@ -70,6 +85,15 @@ class FactoryTest extends TestCase
         $this->assertStringContainsString(
             'Hello Test',
             (new Factory(__NAMESPACE__))->make('data-test-component', ['name' => 'Test'])
+        );
+    }
+
+    /** @test */
+    public function it_should_return_render_with_children_data()
+    {
+        $this->assertStringContainsString(
+            'Hello View',
+            (new Factory(__NAMESPACE__))->make('children-test-component', 'View')
         );
     }
 
