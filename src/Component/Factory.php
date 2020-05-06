@@ -9,7 +9,7 @@ class Factory
 {
     protected $namespace;
 
-    public function __construct($namespace = '\\Theme\\App\\View')
+    public function __construct($namespace = '')
     {
         $this->namespace = $namespace;
     }
