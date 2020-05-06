@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Component;
 
+use Frc\WP\View\Component\ComponentAttributeBag;
 use Tests\TestCase;
 use Frc\WP\View\Component\Factory;
 
@@ -103,6 +104,19 @@ class FactoryTest extends TestCase
         $this->assertEquals(
             ['view' => 'view-component', 'data' => ['title' => 'Test']],
             (new Factory)->make(ViewComponent::class, ['title' => 'Test'])
+        );
+    }
+
+    /** @test */
+    public function it_should_return_view_anonymous_component()
+    {
+        $component = (new Factory)->make('components/anonymous', ['title' => 'Test']);
+        $this->assertArrayHasKey('title', $component['data']);
+        $this->assertArrayHasKey('attributes', $component['data']);
+
+        $this->assertInstanceOf(
+            ComponentAttributeBag::class,
+            $component['data']['attributes']
         );
     }
 }

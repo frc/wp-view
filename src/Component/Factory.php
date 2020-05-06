@@ -43,6 +43,8 @@ class Factory
     {
         if (! is_array($data)) {
             $data = ['children' => $data];
+        } elseif (is_array($data) && ! (array_keys($data) !== range(0, count($data) - 1))) {
+            $data = ['children' => "\n" . join("\n", $data) . "\n"];
         }
 
         $className = $this->componentClass($component);
@@ -62,7 +64,13 @@ class Factory
                 $dir = $dir . DIRECTORY_SEPARATOR;
             }
             $name = $dir . $name;
+        }
 
+        if (! $className) {
+            $instance = new AnonymousComponent($data);
+        }
+
+        if ($instance) {
             $data = get_object_vars($instance);
 
             if (method_exists($instance, 'render')) {
