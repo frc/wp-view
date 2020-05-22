@@ -39,13 +39,15 @@ class Factory
         }
     }
 
-    public function make($component, $data = [])
+    public function make($component, $data = [], $mergeData = [])
     {
         if (! is_array($data)) {
             $data = ['children' => $data];
         } elseif (is_array($data) && ! (array_keys($data) !== range(0, count($data) - 1))) {
             $data = ['children' => "\n" . join("\n", $data) . "\n"];
         }
+
+        $data = array_merge($mergeData, $data);
 
         $className = $this->componentClass($component);
 

@@ -19,4 +19,18 @@ class FactoryTest extends TestCase
             ])))->make('index')
         );
     }
+
+    /** @test */
+    public function it_should_merge_data_arrays()
+    {
+        $view = (new Factory(new FileFinder([
+            __DIR__ . '/../stubs/views'
+        ])))->make(
+            'merge-data',
+            ['title' => 'Custom Title'],
+            ['title' => 'default', 'link' => '#test']
+        )->render();
+
+        $this->assertStringContainsString('Custom Title', $view);
+    }
 }

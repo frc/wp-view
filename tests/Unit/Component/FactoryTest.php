@@ -89,6 +89,19 @@ class FactoryTest extends TestCase
         );
     }
 
+     /** @test */
+    public function it_should_return_render_with_merge_data()
+    {
+        $this->assertStringContainsString(
+            'Hello Custom',
+            (new Factory)->make(
+                DataTestComponent::class,
+                ['name' => 'Custom'],
+                ['name' => 'Default']
+            )
+        );
+    }
+
     /** @test */
     public function it_should_return_render_with_children_data()
     {

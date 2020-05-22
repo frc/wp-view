@@ -18,9 +18,11 @@ class Factory
         return $this->viewInstance($path, $path, $data);
     }
 
-    public function make($view, $data = [])
+    public function make($view, $data = [], $mergeData = [])
     {
         $path = $this->finder->find($view);
+
+        $data = array_merge($mergeData, $data);
 
         return $this->viewInstance($view, $path, $data);
     }
