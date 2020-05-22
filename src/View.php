@@ -66,6 +66,11 @@ class View
         return $this;
     }
 
+    public function name()
+    {
+        return $this->view;
+    }
+
     public function __toString()
     {
         return $this->render();
